@@ -1,0 +1,73 @@
+<template name="allCollection">
+<div class="row">
+
+<!-- option bar on the left, 3grid -->
+	<div class="col-sm-2 col-xs-12">
+		<div class="col-xs-12" style="text-align:center;">
+			<!-- Single button -->
+			<div class="btn-group">
+			  <button type="button" class="btn btn-success dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+			    Sort By<br>{{sortBy}}<span class="caret"></span>
+			  </button>
+			  <ul class="dropdown-menu">
+			  	<li><a href="#" onclick="setSort('date')">Date</a></li>
+			    <li><a href="#" onclick="setSort('year')">Year</a></li>
+			    <li><a href="#" onclick="setSort('module')">Module</a></li>
+			    <li><a href="#" onclick="setSort('specialisation')">Specialisation</a></li>
+			  </ul>
+			</div>
+		</div>
+
+		<!-- option board -->
+		<div class="col-xs-12">
+			<div id="optionBoard">
+			{{#if sortByYear}}
+				<div class="btn-group-vertical col-xs-12" role="group">
+				  <button type="button" class="btn btn-default" onclick="setFieldQuery(1)">Year 1</button>
+				  <button type="button" class="btn btn-default" onclick="setFieldQuery(2)">Year 2</button>
+				  <button type="button" class="btn btn-default" onclick="setFieldQuery(34)">Year 3/4</button>
+				  <button type="button" class="btn btn-default" onclick="setFieldQuery(0)">All</button>
+				</div>
+			{{/if}}
+			{{#if sortByDate}}
+				<div class="btn-group-vertical col-xs-12" role="group">
+				  <button type="button" class="btn btn-default" onclick="setSortQuery('latest')">Latest</button>
+				  <button type="button" class="btn btn-default" onclick="setSortQuery('oldest')">oldest</button>
+				</div>
+			{{/if}}
+			{{#if sortByModule}}
+				<div class="btn-group-vertical col-xs-12" role="group">
+				  <button type="button" class="btn btn-default">PC1433</button>
+				  <button type="button" class="btn btn-default">ESP1104</button>
+				</div>
+			{{/if}}
+			{{#if sortBySpecialisation}}
+				<div class="btn-group-vertical col-xs-12" role="group">
+				  <button type="button" class="btn btn-default" onclick="setFieldQuery('po')">PO</button>
+				  <button type="button" class="btn btn-default" onclick="setFieldQuery('ces')">CES</button>
+				  <button type="button" class="btn btn-default" onclick="setFieldQuery('es')">ES</button>
+				  <button type="button" class="btn btn-default" onclick="setFieldQuery('nano')">Nano</button>
+				</div>
+			{{/if}}
+			</div>
+		</div>
+	</div>
+
+<!-- central display on the right  9grid -->
+	<div class="col-sm-10 col-xs-12">
+		{{#each eachBooks}}
+		<div class="row">
+			<div class="col-xs-3">
+				<img src="/images/icons/book.jpg" alt="{{title}}" class="col-xs-12">
+			</div>
+			<div class="col-xs-5">
+				<h4>{{title}}</h4>
+				<p>Description: <br>{{description}}</p>
+			</div>		
+		</div>
+		<hr>
+		{{/each}}
+	</div>
+</div>
+	
+</template>
